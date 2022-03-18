@@ -26,7 +26,6 @@ import NewContainer from "../Component/NewContainer";
 import TopHideSideNavigation from "../Component/TopHideSideNavigation";
 import { FiMenu } from "react-icons/fi";
 import Logo from "../Component/Logo";
-import HideHeaderBaar from "../Component/HideHeaderBaar";
 
 import Style from "./Home.module.css";
 export default function Home() {

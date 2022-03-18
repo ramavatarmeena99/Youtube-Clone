@@ -5,7 +5,6 @@ import { MdKeyboardVoice } from "react-icons/md";
 import { BiVideoPlus } from "react-icons/bi";
 import { CgMenuGridR } from "react-icons/cg";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { SiYoutube } from "react-icons/si";
 import { FiMenu } from "react-icons/fi";
 import Logo from "../Logo";
 import HideHeaderBaar from "../HideHeaderBaar";
@@ -73,7 +72,10 @@ export default function Header(props) {
               </div>
             </div>
             <div className={Style.profile}>
-              <img src="https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk=" />
+              <img
+                alt="Profile Img"
+                src="https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk="
+              />
             </div>
           </div>
         </div>
