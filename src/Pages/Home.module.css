@@ -1,0 +1,178 @@
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  padding-top: 10vh;
+}
+.left {
+  width: 15%;
+  height: 90vh;
+  min-height: 80px;
+  background-color: #212121;
+  color: wheat;
+  margin-bottom: 100px;
+  position: fixed;
+  overflow-x: scroll;
+}
+.top {
+  width: 100%;
+  height: auto;
+  /* background-color: brown; */
+  border-bottom: 1px solid gray;
+  padding-bottom: 15px;
+}
+.top h4 {
+  font-size: 14px;
+  font-weight: bolder;
+  color: gray;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.right {
+  width: 100%;
+  height: auto;
+  max-height: 98vh;
+  background-color: #181818;
+
+  display: flex;
+  flex-direction: column;
+  padding-left: 15%;
+  overflow-y: scroll;
+}
+.rightTop {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  overflow-x: scroll;
+}
+.newSideBaarMainu {
+  display: none;
+}
+
+.cards {
+  width: 100%;
+  height: auto;
+  padding-top: 7vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.newContainer {
+  width: 5%;
+  height: 100vh;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #212121;
+  position: fixed;
+}
+.newHideYoutube {
+  display: none;
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding-top: 7vh;
+  }
+  .left {
+    display: none;
+  }
+  .right {
+    width: 100%;
+    height: auto;
+    padding-left: 0px;
+    margin: 0px 0px;
+    position: fixed;
+    max-height: 98vh;
+  }
+
+  .topHideSideNavigation {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid gray;
+    padding: 15px 0px;
+  }
+  .topHideSideNavigation h4 {
+    font-size: 15px;
+    font-weight: bolder;
+    color: gray;
+    padding-left: 30px;
+    padding-bottom: 10px;
+  }
+  .newHideYoutube {
+    width: 55%;
+    height: 8vh;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+  }
+  .newHideYoutube .mainuIcons {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+    padding-left: 30px;
+    cursor: pointer;
+  }
+
+  .newHideYoutube .mainuLogo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+  }
+  .newHideYoutube .mainuLogo p {
+    font-size: 10px;
+    color: white;
+    padding-left: 5px;
+    position: relative;
+    right: 0px;
+    top: -8px;
+  }
+  .newSideBaarMainu {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 120vh;
+    min-height: 80vh;
+    background-color: #212121;
+    color: wheat;
+    animation: coolAnimation 0.5s;
+    overflow-x: scroll;
+    z-index: 9;
+    position: relative;
+    top: -60px;
+    left: 0px;
+  }
+  @keyframes coolAnimation {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 50%;
+    }
+  }
+  .newContainer {
+    display: none;
+  }
+}

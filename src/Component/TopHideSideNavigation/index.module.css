@@ -1,0 +1,52 @@
+.TopHideSideNavigation:hover {
+  background-color: #38383879;
+  color: white;
+}
+.TopHideSideNavigationIcon {
+  font-size: 100px;
+  margin-left: 30px;
+  color: white;
+}
+.TopHideSideNavigation p {
+  padding-left: 30px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: white;
+}
+.TopHideSideNavigation p:hover {
+  color: white;
+}
+
+@media only screen and (max-width: 800px) {
+  .TopHideSideNavigation {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 0px;
+    cursor: pointer;
+  }
+
+  .TopHideSideNavigation:hover {
+    background-color: #38383879;
+    color: white;
+    /* color: green; */
+  }
+  .TopHideSideNavigationIcon {
+    font-size: 23px;
+    margin-left: 30px;
+    color: white;
+  }
+  .TopHideSideNavigation p {
+    padding-left: 30px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: white;
+  }
+  .TopHideSideNavigation p:hover {
+    color: white;
+  }
+}

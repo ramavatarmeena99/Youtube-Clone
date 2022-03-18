@@ -1,0 +1,280 @@
+.header {
+  width: 100%;
+  height: 10vh;
+  background-color: #212121;
+
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+}
+.youtubeLogo {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.youtubeLogo .mainuIcons {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.youtubeLogo .mainuLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  color: red;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+.youtubeLogo .mainuLogo p {
+  font-size: 10px;
+  color: white;
+  padding-left: 5px;
+  position: relative;
+  right: 0px;
+  top: -8px;
+}
+.searchBox {
+  flex: 1;
+  height: 100%;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.searchBoxCenter {
+  width: 70%;
+  height: 60%;
+  background-color: #212121;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+.searchBoxCenter input {
+  width: 90%;
+  height: 95%;
+  font-size: 16px;
+  padding-left: 10px;
+  background-color: #121212;
+  color: white;
+  border: none;
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.315);
+}
+.searchBoxCenter input:hover {
+  border: 1px solid darkblue;
+}
+.searchBoxCenter .searchIcon {
+  flex: 1;
+  height: 95%;
+  background-color: #383838;
+
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 100;
+  cursor: pointer;
+}
+.hideSearchIcon {
+  width: 60px;
+  height: 58%;
+  background-color: transparent;
+
+  color: white;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 100;
+  cursor: pointer;
+}
+.voiceIcon {
+  width: 45px;
+  height: 45px;
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  border-radius: 50px;
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.profileOptions {
+  width: 20%;
+  height: 100%;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.uploadIconCenter {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  /* background-color: red; */
+}
+.uploadIcon {
+  width: 30%;
+  height: 70%;
+  font-size: 27px;
+  margin-top: 10px;
+  /* background-color: aqua; */
+  cursor: pointer;
+  text-align: center;
+  padding-top: 10px;
+  color: white;
+}
+.notificationIcon {
+  width: 30%;
+  height: 70%;
+  font-size: 27px;
+  margin-top: 10px;
+  /* background-color: aqua; */
+  cursor: pointer;
+  text-align: center;
+  padding-top: 10px;
+  color: white;
+}
+.profile {
+  width: 38px;
+  height: 38px;
+  background-color: black;
+  border-radius: 50px;
+  margin-left: 10px;
+  cursor: pointer;
+  /* margin-right: 50px; */
+}
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+@media only screen and (max-width: 800px) {
+  .youtubeLogo {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .youtubeLogo .mainuIcons {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 23px;
+    padding-left: 25px;
+    cursor: pointer;
+  }
+
+  .youtubeLogo .mainuLogo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+  }
+  .header {
+    width: 100%;
+    height: 7vh;
+  }
+
+  .searchBox {
+    width: 10%;
+    height: 100%;
+  }
+  .searchBoxCenter {
+    width: 100%;
+    height: 60%;
+    background-color: #212121;
+  }
+  .searchBoxCenter input {
+    display: none;
+  }
+  .searchBoxCenter {
+    width: 10%;
+    height: 50%;
+    padding-left: 0px;
+    background-color: transparent;
+  }
+  .searchBoxCenter .searchIcon {
+    background-color: transparent;
+    display: none;
+  }
+  .hideSearchIcon {
+    display: flex;
+    margin-left: 20px;
+  }
+  .voiceIcon {
+    display: none;
+  }
+  /* .searchIcon {
+    display: none;
+  } */
+  .uploadIcon {
+    width: 100%;
+    height: 50%;
+    font-size: 25px;
+    margin-top: 0px;
+    padding-right: 15px;
+    padding-top: 0px;
+  }
+  .notificationIcon {
+    display: none;
+  }
+  .profileOptions {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .uploadIconCenter {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 20px;
+  }
+  .profile {
+    width: 33px;
+    height: 33px;
+    background-color: black;
+    border-radius: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+    /* margin-right: 50px; */
+  }
+}

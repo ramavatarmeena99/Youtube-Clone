@@ -1,0 +1,25 @@
+.newContainer {
+  width: 100%;
+  height: 10vh;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.newContainer:hover {
+  background-color: #383838;
+  opacity: 0.6;
+  color: white;
+}
+.newContainerTop {
+  font-size: 25px;
+  color: white;
+}
+.newContainer p {
+  font-size: 10px;
+  color: white;
+  font-weight: 500;
+}
