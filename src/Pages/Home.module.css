@@ -10,7 +10,7 @@
   height: 90vh;
   min-height: 80px;
   background-color: #212121;
-  color: wheat;
+  color: white;
   margin-bottom: 100px;
   position: fixed;
   overflow-x: scroll;
@@ -100,7 +100,6 @@
     height: auto;
     border-bottom: 1px solid gray;
     padding: 15px 0px;
-    /* background-color: red; */
   }
   .topHideSideNavigation h4 {
     font-size: 15px;
@@ -116,7 +115,6 @@
     display: flex;
     flex-direction: row;
     position: fixed;
-    /* background-color: red; */
   }
   .newHideYoutube .mainuIcons {
     width: 30%;
@@ -156,17 +154,17 @@
     display: flex;
     align-items: center;
     width: 55%;
-    height: 120vh;
-    min-height: 80vh;
+    height: 103vh;
+    min-height: 80px;
     background-color: #212121;
     color: wheat;
     animation: coolAnimation 0.5s;
     overflow-x: scroll;
     z-index: 9;
-    position: relative;
+    position: fixed;
     top: -60px;
     left: 0px;
-    /* background-color: red; */
+    margin-top: 7vh;
   }
   @keyframes coolAnimation {
     from {
@@ -180,8 +178,10 @@
     display: none;
   }
   .HideNavigation {
-    margin-top: 6vh;
+    margin-top: 8vh;
     width: 100%;
-    /* background-color: red; */
+    height: auto;
+    background-color: red;
+    /* position: fixed; */
   }
 }
