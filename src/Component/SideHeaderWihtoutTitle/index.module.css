@@ -1,27 +1,6 @@
-.container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  padding-top: 10vh;
-}
-
-.right {
-  width: 100%;
-  height: auto;
-  max-height: 98vh;
-  background-color: #181818;
-
-  display: flex;
-  flex-direction: column;
-  padding-left: 15%;
-  overflow-y: scroll;
-}
-
 .newSideBaarMainu {
   display: none;
 }
-
 .newContainer {
   width: 5%;
   height: 100vh;
@@ -35,25 +14,7 @@
 .newHideYoutube {
   display: none;
 }
-
 @media only screen and (max-width: 800px) {
-  .container {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    padding-top: 7vh;
-  }
-
-  .right {
-    width: 100%;
-    height: auto;
-    padding-left: 0px;
-    margin: 0px 0px;
-    position: fixed;
-    max-height: 98vh;
-  }
-
   .topHideSideNavigation {
     width: 100%;
     height: auto;
@@ -141,6 +102,5 @@
     margin-top: 8vh;
     width: 100%;
     height: auto;
-    /* position: fixed; */
   }
 }

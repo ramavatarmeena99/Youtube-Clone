@@ -1,0 +1,29 @@
+.container {
+  width: 15%;
+  height: 90vh;
+  min-height: 80px;
+  background-color: #212121;
+  color: white;
+  margin-bottom: 100px;
+  position: fixed;
+  overflow-x: scroll;
+}
+.box {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid gray;
+  padding-bottom: 15px;
+}
+.box h4 {
+  font-size: 14px;
+  font-weight: bolder;
+  color: gray;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    display: none;
+  }
+}
