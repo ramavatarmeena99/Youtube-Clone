@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./index.module.css";
 import { IoIosSearch } from "react-icons/io";
 import { MdKeyboardVoice } from "react-icons/md";
@@ -9,17 +9,66 @@ import { FiMenu } from "react-icons/fi";
 import Logo from "../Logo";
 import HideHeaderBaar from "../HideHeaderBaar";
 import { useWindowSize } from "react-use";
+import axios from "axios";
+import { API_KEY } from "../../keys";
+import {
+  getValueFromLocalStorage,
+  setValueInLocalStorage,
+} from "../../utils/helper";
+// import { useLocalStorage } from "react-use";
 
 export default function Header(props) {
+  const [searchQuery, setSearchQuery] = useState("fun");
+  const [myVideo, setMyVideo] = useState([]);
+
+  // const [value, setValue, remove] = useLocalStorage("myVideo", []);
+
+  const [loading, setLoading] = useState(false);
+
   const [isChangeHeaderBaar, setIsHeaderBaarChange] = useState(false);
   const { width } = useWindowSize();
 
+  const findVideo = (e) => {
+    setSearchQuery(e.target.value);
+  };
+  const onKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      searchVideos(true);
+    }
+  };
   const searchStateBaarHandler = () => {
     setIsHeaderBaarChange(!isChangeHeaderBaar);
   };
-  const searchVideos = () => {
-    alert("Search ho raha hai");
+  const searchVideos = (searchQueryAction) => {
+    setValueInLocalStorage("loading", true);
+
+    axios({
+      method: "GET",
+      url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=52&key=${API_KEY}`,
+
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => {
+        setValueInLocalStorage("myVideo", res.data.items);
+        setValueInLocalStorage("loading", false);
+
+        // setValue(res.data.items);
+        setMyVideo(res.data.items);
+        setLoading(false);
+
+        // console.log(res.data.items.length);
+      })
+      .catch((err) => {
+        console.log("err: ", err);
+        setLoading(false);
+      });
   };
+  useEffect(() => {
+    setValueInLocalStorage("loading", true);
+  }, []);
   return (
     <>
       {isChangeHeaderBaar ? (
@@ -47,12 +96,17 @@ export default function Header(props) {
             </div>
 
             <div className={Style.searchBoxCenter}>
-              <input placeholder="Search" type="search" />
+              <input
+                onChange={findVideo}
+                onKeyDown={onKeyPress}
+                placeholder="Search"
+                type="search"
+              />
               <div
                 onClick={width < 800 ? searchStateBaarHandler : searchVideos}
                 className={Style.searchIcon}
               >
-                <IoIosSearch />
+                <IoIosSearch onClick={() => searchVideos(true)} />
               </div>
             </div>
             <div className={Style.voiceIcon}>

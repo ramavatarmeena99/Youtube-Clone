@@ -1,18 +1,44 @@
-.mainVideosContainer {
+.youtubePlayerSimilerVideo {
   width: 100%;
   height: auto;
-  background-color: #181818;
-
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 7vh;
+  justify-content: space-between;
+  background-color: #181818;
+}
+
+.youtubePlayedVIdeo {
+  width: 70%;
+  height: 100vh;
+
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin-top: 13vh;
+}
+.VideoContainer {
+  margin: 10px;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  object-fit: contain;
+}
+.similerVideos {
+  width: 30%;
+  height: 100%;
+  background-color: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 70%;
+  margin-top: 13vh;
 }
 
 .YoutubeVideosList {
-  flex: 1;
-  flex-basis: 250px;
-  height: 300px;
+  width: 90%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,20 +46,11 @@
   margin: 2px 10px;
   background-color: transparent;
   object-fit: cover;
-}
-
-.VideoContainer {
-  /* margin: 10px; */
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  /* object-fit: contain; */
+  /* padding-top: 20px; */
 }
 .thumbnail {
   width: 100%;
-  height: 50%;
+  height: 100%;
 }
 .thumbnail img {
   width: 100%;
@@ -50,29 +67,6 @@
   justify-content: center;
 }
 
-.profilePic {
-  width: 20%;
-  height: 100%;
-  background-color: transparent;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-bottom: 35px;
-}
-.profilePic div {
-  width: 35px;
-  height: 35px;
-  border-radius: 50px;
-  background-color: black;
-  margin-top: 5px;
-  cursor: pointer;
-}
-.profilePic div img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
 .videoTitle {
   width: 80%;
   height: 100%;
@@ -119,6 +113,7 @@
   flex-direction: row;
   align-items: center;
   text-align: start;
+  padding-bottom: 20px;
 }
 
 .ButtomVideoTItle .views {
@@ -128,4 +123,30 @@
 .ButtomVideoTItle .uploadTime {
   font-size: 11px;
   padding-left: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .youtubePlayerSimilerVideo {
+    flex-direction: column;
+  }
+
+  .youtubePlayedVIdeo {
+    margin-top: 7vh;
+  }
+
+  .similerVideos {
+    width: 100%;
+    height: 100%;
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0%;
+    margin-top: 50vh;
+  }
+  .playedVIdeo {
+    width: 400px;
+    height: 300px;
+    margin-left: 5px;
+  }
 }

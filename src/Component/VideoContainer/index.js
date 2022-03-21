@@ -1,6 +1,5 @@
 import React from "react";
 import Style from "./index.module.css";
-
 export default function VideoContainer(props) {
   return (
     <div className={Style.videoCards}>
