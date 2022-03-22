@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Style from "./index.module.css";
 import { IoIosSearch } from "react-icons/io";
 import { MdKeyboardVoice } from "react-icons/md";
@@ -8,25 +8,15 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import Logo from "../Logo";
 import HideHeaderBaar from "../HideHeaderBaar";
-import { useWindowSize } from "react-use";
+
 import axios from "axios";
 import { API_KEY } from "../../keys";
-import {
-  getValueFromLocalStorage,
-  setValueInLocalStorage,
-} from "../../utils/helper";
-// import { useLocalStorage } from "react-use";
+import { setValueInLocalStorage } from "../../utils/helper";
 
 export default function Header(props) {
   const [searchQuery, setSearchQuery] = useState("fun");
-  const [myVideo, setMyVideo] = useState([]);
-
-  // const [value, setValue, remove] = useLocalStorage("myVideo", []);
-
-  const [loading, setLoading] = useState(false);
 
   const [isChangeHeaderBaar, setIsHeaderBaarChange] = useState(false);
-  const { width } = useWindowSize();
 
   const findVideo = (e) => {
     setSearchQuery(e.target.value);
@@ -39,9 +29,7 @@ export default function Header(props) {
   const searchStateBaarHandler = () => {
     setIsHeaderBaarChange(!isChangeHeaderBaar);
   };
-  const searchVideos = (searchQueryAction) => {
-    setValueInLocalStorage("loading", true);
-
+  const searchVideos = () => {
     axios({
       method: "GET",
       url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=48&key=${API_KEY}`,
@@ -54,18 +42,12 @@ export default function Header(props) {
       .then((res) => {
         setValueInLocalStorage("myVideo", res.data.items);
         setValueInLocalStorage("loading", false);
-
-        setMyVideo(res.data.items);
-        setLoading(false);
       })
       .catch((err) => {
         console.log("err: ", err);
-        setLoading(false);
       });
   };
-  useEffect(() => {
-    setValueInLocalStorage("loading", true);
-  }, []);
+
   return (
     <>
       {isChangeHeaderBaar ? (

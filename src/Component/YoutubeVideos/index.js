@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLocalStorage } from "react-use";
-import { videos } from "../../Data";
+
 import { getValueFromLocalStorage } from "../../utils/helper";
-import VideoContainer from "../VideoContainer";
+
 import Style from "./index.module.css";
 
 export default function YoutubeTagsComponent() {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getValueFromLocalStorage } from "../../utils/helper";
 import Style from "./index.module.css";
 export default function YoutubePlayerSimilerVideo() {
@@ -26,6 +26,7 @@ export default function YoutubePlayerSimilerVideo() {
         <div className={Style.youtubePlayedVIdeo}>
           <div>
             <iframe
+              title="Youtube Video Play"
               className={Style.playedVIdeo}
               width="1000"
               height="500"
