@@ -44,7 +44,7 @@ export default function Header(props) {
 
     axios({
       method: "GET",
-      url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=52&key=${API_KEY}`,
+      url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=48&key=${API_KEY}`,
 
       headers: {
         Accept: "application/json",
@@ -55,11 +55,8 @@ export default function Header(props) {
         setValueInLocalStorage("myVideo", res.data.items);
         setValueInLocalStorage("loading", false);
 
-        // setValue(res.data.items);
         setMyVideo(res.data.items);
         setLoading(false);
-
-        // console.log(res.data.items.length);
       })
       .catch((err) => {
         console.log("err: ", err);
@@ -92,7 +89,7 @@ export default function Header(props) {
               className={Style.hideSearchIcon}
               onClick={searchStateBaarHandler}
             >
-              <IoIosSearch />
+              <IoIosSearch onClick={() => searchVideos(true)} />
             </div>
 
             <div className={Style.searchBoxCenter}>
@@ -102,10 +99,7 @@ export default function Header(props) {
                 placeholder="Search"
                 type="search"
               />
-              <div
-                onClick={width < 800 ? searchStateBaarHandler : searchVideos}
-                className={Style.searchIcon}
-              >
+              <div className={Style.searchIcon}>
                 <IoIosSearch onClick={() => searchVideos(true)} />
               </div>
             </div>
