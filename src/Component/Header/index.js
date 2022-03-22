@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./index.module.css";
 import { IoIosSearch } from "react-icons/io";
 import { MdKeyboardVoice } from "react-icons/md";
@@ -29,10 +29,13 @@ export default function Header(props) {
   const searchStateBaarHandler = () => {
     setIsHeaderBaarChange(!isChangeHeaderBaar);
   };
-  const searchVideos = () => {
+  const searchVideos = (value) => {
     axios({
       method: "GET",
-      url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=48&key=${API_KEY}`,
+      url:
+        value === "start"
+          ? `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=100&key=${API_KEY}`
+          : `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=48&key=${API_KEY}`,
 
       headers: {
         Accept: "application/json",
@@ -47,6 +50,10 @@ export default function Header(props) {
         console.log("err: ", err);
       });
   };
+
+  useEffect(() => {
+    setValueInLocalStorage("myVideo", []);
+  }, []);
 
   return (
     <>
