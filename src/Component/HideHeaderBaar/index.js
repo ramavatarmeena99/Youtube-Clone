@@ -7,7 +7,7 @@ import { IoIosSearch } from "react-icons/io";
 import { API_KEY } from "../../keys";
 import { setValueInLocalStorage } from "../../utils/helper";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function HideHeaderBaar(props) {
   const [searchQuery, setSearchQuery] = useState("fun");
@@ -64,7 +64,7 @@ export default function HideHeaderBaar(props) {
 
   return (
     <div className={Style.hideHeaderBaar}>
-      <div onClick={props.searchStateBaarHandler} className={Style.arrowButton}>
+      <div onClick={searchStateBaarHandler} className={Style.arrowButton}>
         <AiOutlineArrowLeft />
       </div>
       <div className={Style.searchButton}>

@@ -11,16 +11,35 @@ import { MdContentCut } from "react-icons/md";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 
-export default function YoutubePlayerSimilerVideo() {
+function LikeDislikeReplyButtons(props) {
+  const [incressLikes, setIncressLikes] = useState(
+    props.item.snippet.topLevelComment.snippet.likeCount
+  );
+  const clickForLikes = () => {
+    setIncressLikes(incressLikes + 1);
+  };
+  return (
+    <div className={Style.authorLikeOrDisCount}>
+      <div className={Style.authorLikeCount}>
+        <AiOutlineLike onClick={clickForLikes} />
+        <h1 className={Style.likeCount}>{incressLikes}</h1>
+      </div>
+      <div className={Style.authorDisLikeCount}>
+        <AiOutlineDislike />
+      </div>
+      <h1 className={Style.totalReplyCount}>
+        REPLY {props.item.snippet.topLevelComment.snippet.totalReplyCount}
+      </h1>
+    </div>
+  );
+}
+
+function YoutubePlayerSimilerVideo() {
   const { videoId } = useParams();
   const location = useLocation();
   console.log("yaha par ...: ", location);
   const [videos, setVideos] = useState([]);
-  const [incressLikes, setIncressLikes] = useState(0);
 
-  const clickForLikes = () => {
-    setIncressLikes(incressLikes + 1);
-  };
   useEffect(() => {
     const fetchedYoutubeVideo = getValueFromLocalStorage("myVideo");
     setVideos(fetchedYoutubeVideo);
@@ -55,6 +74,16 @@ export default function YoutubePlayerSimilerVideo() {
     console.log(location.state.item.snippet.description);
   }, []);
 
+  //  var x = 0;
+
+  // const f1=()=>{
+  //   var x = 5;
+  //   x = x + 3;
+  // }
+
+  // const f2 = ()=>{
+  //   x= x +6
+  // }
   return (
     <>
       <div className={Style.youtubePlayerSimilerVideo}>
@@ -146,12 +175,13 @@ export default function YoutubePlayerSimilerVideo() {
           </div>
           <div className={Style.Comments}>
             <div className={Style.totalComments}>
-              <div className={Style.totalReplyCount}>
+              {/* <div className={Style.totalReplyCount}>
                 {location.state.item.snippet.totalReplyCount}
-              </div>
+              </div> */}
             </div>
             <div className={Style.allComments}>
               {comments.map((item, index) => {
+                console.log(index, JSON.stringify(item));
                 return (
                   <React.Fragment key={index}>
                     <div className={Style.commentsSection}>
@@ -177,26 +207,7 @@ export default function YoutubePlayerSimilerVideo() {
                           {item.snippet.topLevelComment.snippet.textDisplay}
                         </h1>
 
-                        <div className={Style.authorLikeOrDisCount}>
-                          <div className={Style.authorLikeCount}>
-                            <AiOutlineLike onClick={clickForLikes} />
-                            <h1 className={Style.likeCount}>
-                              {item.snippet.topLevelComment.snippet.likeCount}
-                              {incressLikes}
-                            </h1>
-                            {/* <p>{incressLikes}</p> */}
-                          </div>
-                          <div className={Style.authorDisLikeCount}>
-                            <AiOutlineDislike />
-                          </div>
-                          <h1 className={Style.totalReplyCount}>
-                            REPLY{" "}
-                            {
-                              item.snippet.topLevelComment.snippet
-                                .totalReplyCount
-                            }
-                          </h1>
-                        </div>
+                        <LikeDislikeReplyButtons item={item} />
                       </div>
                     </div>
                   </React.Fragment>
@@ -242,3 +253,5 @@ export default function YoutubePlayerSimilerVideo() {
     </>
   );
 }
+
+export default YoutubePlayerSimilerVideo;

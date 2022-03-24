@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Style from "./index.module.css";
 import { IoIosSearch } from "react-icons/io";
 import { MdKeyboardVoice } from "react-icons/md";
