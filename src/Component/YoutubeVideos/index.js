@@ -5,14 +5,18 @@ import { getValueFromLocalStorage } from "../../utils/helper";
 
 import Style from "./index.module.css";
 
-export default function YoutubeTagsComponent() {
+export default function YoutubeVideosComponent() {
   const [videos, setVideos] = useState([]);
 
-  const fetchedYoutubeVideo = getValueFromLocalStorage("myVideo");
-
   useEffect(() => {
-    setVideos(fetchedYoutubeVideo);
-  }, [fetchedYoutubeVideo]);
+    const fetchedYoutubeVideo = getValueFromLocalStorage("myVideo");
+    console.log("dekh ye raha", fetchedYoutubeVideo);
+    if (fetchedYoutubeVideo === null) {
+      setVideos([]);
+    } else {
+      setVideos(fetchedYoutubeVideo);
+    }
+  }, []);
 
   const navigate = useNavigate();
 

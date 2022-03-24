@@ -8,6 +8,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import Logo from "../Logo";
 import HideHeaderBaar from "../HideHeaderBaar";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 import { API_KEY } from "../../keys";
@@ -23,13 +24,22 @@ export default function Header(props) {
   };
   const onKeyPress = (e) => {
     if (e.keyCode === 13) {
-      searchVideos(true);
+      searchVideos("save");
     }
   };
+  // const navigate = useNavigate();
+
+  // const logo = (item) => {
+  //   navigate(`/Home`);
+  // };
+
   const searchStateBaarHandler = () => {
     setIsHeaderBaarChange(!isChangeHeaderBaar);
   };
   const searchVideos = (value) => {
+    if (value === "save") {
+      //
+    }
     axios({
       method: "GET",
       url:
@@ -45,15 +55,16 @@ export default function Header(props) {
       .then((res) => {
         setValueInLocalStorage("myVideo", res.data.items);
         setValueInLocalStorage("loading", false);
+        window.location.reload();
       })
       .catch((err) => {
         console.log("err: ", err);
       });
   };
 
-  useEffect(() => {
-    setValueInLocalStorage("myVideo", []);
-  }, []);
+  // useEffect(() => {
+  //   // setValueInLocalStorage("myVideo", []);
+  // }, []);
 
   return (
     <>
@@ -68,17 +79,20 @@ export default function Header(props) {
             >
               <FiMenu />
             </div>
-            <div className={Style.mainuLogo}>
-              <Logo />
-              <p>IN</p>
-            </div>
+            <Link to="/">
+              {" "}
+              <div className={Style.mainuLogo}>
+                <Logo />
+                <p>IN</p>
+              </div>
+            </Link>
           </div>
           <div className={Style.searchBox}>
             <div
               className={Style.hideSearchIcon}
               onClick={searchStateBaarHandler}
             >
-              <IoIosSearch onClick={() => searchVideos(true)} />
+              <IoIosSearch />
             </div>
 
             <div className={Style.searchBoxCenter}>
@@ -89,7 +103,7 @@ export default function Header(props) {
                 type="search"
               />
               <div className={Style.searchIcon}>
-                <IoIosSearch onClick={() => searchVideos(true)} />
+                <IoIosSearch onClick={() => searchVideos("save")} />
               </div>
             </div>
             <div className={Style.voiceIcon}>

@@ -10,15 +10,6 @@
     justify-content: center;
     position: fixed;
     padding: 0px 15px;
-
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 7vh;
-    background-color: #212121;
-    padding: 0px 15px; */
   }
 
   .arrowButton {
@@ -32,7 +23,7 @@
     cursor: pointer;
   }
   .searchButton {
-    width: 90%;
+    width: 100%;
     height: 70%;
     font-size: 20px;
     display: flex;
@@ -48,6 +39,7 @@
     padding-left: 13px;
     color: white;
     border: none;
+
     border: 1px solid rgba(128, 128, 128, 0.315);
   }
   .searchButton .searchIcon {
@@ -57,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 25px;
     color: white;
     cursor: pointer;
     /* padding-top: 10px; */
