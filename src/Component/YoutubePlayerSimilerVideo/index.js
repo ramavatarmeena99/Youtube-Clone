@@ -15,8 +15,14 @@ function LikeDislikeReplyButtons(props) {
   const [incressLikes, setIncressLikes] = useState(
     props.item.snippet.topLevelComment.snippet.likeCount
   );
+  // const [decressLikes, setdecressLikes] = useState(
+  //   props.item.snippet.topLevelComment.snippet.likeCount
+  // );
   const clickForLikes = () => {
     setIncressLikes(incressLikes + 1);
+  };
+  const clickForDisLike = () => {
+    setIncressLikes(incressLikes - 1);
   };
   return (
     <div className={Style.authorLikeOrDisCount}>
@@ -25,7 +31,7 @@ function LikeDislikeReplyButtons(props) {
         <h1 className={Style.likeCount}>{incressLikes}</h1>
       </div>
       <div className={Style.authorDisLikeCount}>
-        <AiOutlineDislike />
+        <AiOutlineDislike onClick={clickForDisLike} />
       </div>
       <h1 className={Style.totalReplyCount}>
         REPLY {props.item.snippet.topLevelComment.snippet.totalReplyCount}
@@ -39,7 +45,13 @@ function YoutubePlayerSimilerVideo() {
   const location = useLocation();
   console.log("yaha par ...: ", location);
   const [videos, setVideos] = useState([]);
-
+  const [incressLikes, setIncressLikes] = useState(0);
+  // const [decressLikes, setdecressLikes] = useState(
+  //   props.item.snippet.topLevelComment.snippet.likeCount
+  // );
+  const clickForLikes = () => {
+    setIncressLikes(incressLikes + 1);
+  };
   useEffect(() => {
     const fetchedYoutubeVideo = getValueFromLocalStorage("myVideo");
     setVideos(fetchedYoutubeVideo);
@@ -55,24 +67,23 @@ function YoutubePlayerSimilerVideo() {
   };
 
   const [comments, setcomments] = useState([]);
-  const fetchComments = () => {
-    axios({
-      method: "GET",
-      url: `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${API_KEY}`,
-    })
-      .then((res) => {
-        setcomments(res.data.items);
-      })
-      .catch((err) => {
-        console.log("Error..", err);
-      });
-  };
 
   useEffect(() => {
+    const fetchComments = () => {
+      axios({
+        method: "GET",
+        // url: `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${API_KEY}`,
+        url: `https://youtube.googleapis.com/youtube/v3/commentThreads?part=id%2Csnippet%2Creplies&order=relevance&videoId=${videoId}&key=${API_KEY}`,
+      })
+        .then((res) => {
+          setcomments(res.data.items);
+        })
+        .catch((err) => {
+          console.log("Error..", err);
+        });
+    };
     fetchComments();
-
-    console.log(location.state.item.snippet.description);
-  }, []);
+  }, [videoId]);
 
   //  var x = 0;
 
@@ -113,9 +124,9 @@ function YoutubePlayerSimilerVideo() {
               <div className={Style.publicOpinion}>
                 <div className={Style.likeByViewer}>
                   <div className={Style.likes}>
-                    <AiOutlineLike />
+                    <AiOutlineLike onClick={clickForLikes} />
                   </div>
-                  <p>LIKES</p>
+                  <p>{incressLikes}</p>
                 </div>
                 <div className={Style.disLikeByViewer}>
                   <div className={Style.disLike}>
@@ -206,6 +217,7 @@ function YoutubePlayerSimilerVideo() {
                         <h1 className={Style.textDisplay}>
                           {item.snippet.topLevelComment.snippet.textDisplay}
                         </h1>
+                        {/* <h1>{item.replies.comments.snippet.textDisplay}</h1> */}
 
                         <LikeDislikeReplyButtons item={item} />
                       </div>
