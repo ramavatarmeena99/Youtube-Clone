@@ -102,6 +102,7 @@ function YoutubePlayerSimilerVideo() {
           {/* <h1 className={Style.videoPlayerTitle}></h1> */}
           <div>
             <iframe
+              className={Style.video}
               title="Youtube Video Play"
               width="980"
               height="500"
@@ -154,7 +155,7 @@ function YoutubePlayerSimilerVideo() {
                 </div>
                 <div className={Style.disLikeByViewer}>
                   <div className={Style.disLike}>
-                    <BsThreeDots />
+                    <BsThreeDots className={Style.dots} />
                   </div>
                 </div>
               </div>
