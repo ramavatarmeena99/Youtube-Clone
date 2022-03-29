@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { API_KEY } from "../../keys";
-import { getValueFromLocalStorage } from "../../utils/helper";
+// import { getValueFromLocalStorage } from "../../utils/helper";
 import Style from "./index.module.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
@@ -43,8 +43,8 @@ function LikeDislikeReplyButtons(props) {
 function YoutubePlayerSimilerVideo() {
   const { videoId } = useParams();
   const location = useLocation();
-  console.log("yaha par ...: ", location);
-  const [videos, setVideos] = useState([]);
+  // console.log("yaha par ...: ", location);
+  // const [videos, setVideos] = useState([]);
   const [incressLikes, setIncressLikes] = useState(0);
   // const [decressLikes, setdecressLikes] = useState(
   //   props.item.snippet.topLevelComment.snippet.likeCount
@@ -52,10 +52,10 @@ function YoutubePlayerSimilerVideo() {
   const clickForLikes = () => {
     setIncressLikes(incressLikes + 1);
   };
-  useEffect(() => {
-    const fetchedYoutubeVideo = getValueFromLocalStorage("myVideo");
-    setVideos(fetchedYoutubeVideo);
-  }, []);
+  // useEffect(() => {
+  //   const fetchedYoutubeVideo = getValueFromLocalStorage("myVideo");
+  //   setVideos(fetchedYoutubeVideo);
+  // }, []);
   const navigate = useNavigate();
 
   const redirectToVideoPlayer = (item) => {
@@ -67,6 +67,7 @@ function YoutubePlayerSimilerVideo() {
   };
 
   const [comments, setcomments] = useState([]);
+  const [recomendedComments, setRecomendedComments] = useState([]);
 
   useEffect(() => {
     const fetchComments = () => {
@@ -84,6 +85,26 @@ function YoutubePlayerSimilerVideo() {
     };
     fetchComments();
   }, [videoId]);
+
+  useEffect(() => {
+    const fetchRecomendedComments = () => {
+      axios({
+        method: "GET",
+        // url: `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${API_KEY}`,
+        url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&videoType=videoTypeUnspecified&relatedToVideoId=${videoId}&key=${API_KEY}`,
+      })
+        .then((res) => {
+          setRecomendedComments(res.data.items);
+          console.log(JSON.stringify(res.data.items));
+        })
+        .catch((err) => {
+          console.log("Error..", err);
+        });
+    };
+    fetchRecomendedComments();
+  }, [videoId]);
+
+  // fetchCecomendedComments();
 
   //  var x = 0;
 
@@ -109,7 +130,7 @@ function YoutubePlayerSimilerVideo() {
               frameBorder="0"
               allowFullScreen
               allow="autoplay"
-              src={`https://www.youtube.com/embed/${videoId}`}
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
             ></iframe>
           </div>
           <div className={Style.youtubePlayVideo}>
@@ -201,7 +222,8 @@ function YoutubePlayerSimilerVideo() {
                         <div>
                           <img
                             src={
-                              "https://i1.wp.com/letusgoto.com/wp-content/uploads/2017/03/Top-25-Punjabi-Travel-Songs.png?fit=950%2C450&resize=1280%2C720"
+                              item.snippet.topLevelComment.snippet
+                                .authorProfileImageUrl
                             }
                             alt={item.snippet.title}
                           />
@@ -230,7 +252,7 @@ function YoutubePlayerSimilerVideo() {
           </div>
         </div>
         <div className={Style.similerVideos}>
-          {videos.map((item, index) => {
+          {recomendedComments.map((item, index) => {
             return (
               <React.Fragment key={index}>
                 <div
@@ -240,15 +262,15 @@ function YoutubePlayerSimilerVideo() {
                   <div className={Style.VideoContainer}>
                     <div className={Style.thumbnail}>
                       <img
-                        src={item.snippet.thumbnails.medium.url}
-                        alt={item.snippet.title}
+                        src={item.snippet?.thumbnails.high.url}
+                        alt={item.snippet?.title}
                       />
                     </div>
                     <div className={Style.youtubeVideoInfo}>
                       <div className={Style.videoTitle}>
                         <div className={Style.topVideoTitle}>
-                          <h1>{item.snippet.title}</h1>
-                          <p>{item.snippet.channelTitle}</p>
+                          <h1>{item.snippet?.title}</h1>
+                          <p>{item.snippet?.channelTitle}</p>
                         </div>
                         <div className={Style.ButtomVideoTItle}>
                           <p className={Style.views}>31k views</p>

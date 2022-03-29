@@ -15,7 +15,7 @@ import { API_KEY } from "../../keys";
 import { setValueInLocalStorage } from "../../utils/helper";
 
 export default function Header(props) {
-  const [searchQuery, setSearchQuery] = useState("fun");
+  const [searchQuery, setSearchQuery] = useState("most");
 
   const [isChangeHeaderBaar, setIsHeaderBaarChange] = useState(false);
 
