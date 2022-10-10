@@ -1,4 +1,4 @@
-![](https://github.com/ramavatarmeena99/Avatar-TV/blob/main/src/Img/demo.png?raw=true)
+![](https://github.com/ramavatarmeena99/Youtube-Clone/blob/main/src/Assists/demo.png?raw=true)
 
 ##  Project
 Here is a youtube clone app
